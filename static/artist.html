@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artist Details</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #424242;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 30px;
+            background: #4bc0f7;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .container:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: #333;
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        .artist-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+
+        .artist-info {
+            flex: 1;
+            margin-left: 2cm; /* Added this line for 2cm spacing */
+        }
+
+        .artist-name-container {
+            display: inline-block;
+            position: relative;
+        }
+
+        .artist-line {
+            height: 4px;
+            background-color: black;
+            width: calc(100% + 100px);
+            position: absolute;
+            bottom: -5px;
+            left: -5px;
+            border: none;
+        }
+
+        .artist-image-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-left: 10px; /* This can be adjusted if needed */
+        }
+
+        .artist-image {
+            max-width: 200px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .artist-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .image-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .details {
+            display: flex;
+            justify-content: space-between;
+            color: #495057;
+            line-height: 1.6;
+        }
+
+        .details .members {
+            flex: 1;
+        }
+
+        .details .members div {
+            margin-bottom: 15px;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .details .members div strong {
+            color: #333;
+        }
+
+        .details .concerts {
+            flex: 1;
+            margin-left: 20px; /* Added this line for spacing */
+            position: relative; /* Added to position the pseudo-element */
+        }
+
+        .details .concerts::before {
+            content: "";
+            position: absolute;
+            left: -15px; /* Adjust left position */
+            top: 0;
+            width: 5px; /* Adjust width */
+            height: 100%; /* Adjust height */
+            background-color: black;
+        }
+
+        .details .concerts div {
+            margin-bottom: 15px;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 25px;
+            background: #000000;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: background 0.3s, transform 0.3s;
+            text-align: center;
+        }
+
+        .back-link:hover {
+            background: #138496;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+                padding: 20px;
+            }
+
+            .artist-section {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .artist-info {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            .artist-image-container {
+                margin-left: 0;
+            }
+
+            .details {
+                flex-direction: column;
+                gap: 0;
+            }
+
+            .details .members {
+                flex-basis: auto;
+            }
+
+            .details .members div {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+
+            .details .members div strong {
+                margin-right: 10px;
+            }
+
+            .details .concerts {
+                margin-left: 0; /* Reset margin for mobile */
+            }
+
+            .details .concerts::before {
+                left: -10px; /* Adjust left position for mobile */
+                width: 3px; /* Adjust width for mobile */
+            }
+
+            .back-link {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .details .members div {
+                font-size: 0.8rem;
+            }
+
+            .details .concerts div {
+                font-size: 0.8rem;
+            }
+
+            .back-link {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="artist-section">
+            <div class="artist-image-container">
+                <div class="image-container">
+                    <img src="{{.Image}}" alt="{{.Name}}" class="artist-image">
+                    <div>
+                        <div><strong>Members:</strong></div>
+                        {{range .Members}}
+                            <div>{{.}}</div>
+                        {{end}}
+                        <div><strong>Creation Date:</strong> {{.CreationDate}}</div>
+                        <div><strong>First Album:</strong> {{.FirstAlbum}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="artist-info">
+                <div class="artist-name-container">
+                    <h1 class="artist-name">{{.Name}}</h1>
+                    <div><strong>Concerts:</strong></div>
+                    <div class="concerts">
+                        {{range $key, $values := .Concerts}}
+                            <div><strong>{{$key}}:</strong> 
+                                {{range $index, $value := $values}}
+                                    {{if $index}}, {{end}}{{.}}
+                                {{end}}
+                            </div>
+                        {{end}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a href="/" class="back-link">Back to Home</a>
+    </div>
+</body>
+</html>
